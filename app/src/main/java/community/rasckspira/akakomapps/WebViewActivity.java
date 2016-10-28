@@ -53,6 +53,7 @@ public class WebViewActivity extends AppCompatActivity {
         String url = getIntent().getExtras().getString(KEY_URL);
         web.getSettings().setLoadsImagesAutomatically(true);
         web.getSettings().setJavaScriptEnabled(true);
+        web.getSettings().setBuiltInZoomControls(true);
         web.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         web.loadUrl(url);
     }

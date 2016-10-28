@@ -96,6 +96,7 @@ public class BeritaFragment extends Fragment {
                                 item.setWaktu(jsonObject.getString("wBerita"));
                                 item.setFoto(jsonObject.getString("gamBerita"));
                                 item.setDetail(jsonObject.getString("isBerita"));
+                                item.setLink(jsonObject.getString("link"));
 //                                item.setJudul(deskripsi.substring(0, 100));
 //                                item.setDetail(deskripsi);
                                 feedItemList.add(item);

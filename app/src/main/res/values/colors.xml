@@ -8,6 +8,7 @@
     <color name="colorSecondGray">#9E9E9E</color>
     <color name="colorGrayPrimary">#424242</color>
     <color name="colorBack">#E0E0E0</color>
+    <color name="colorBackTransparent">#80E0E0E0</color>
     <color name="colorItemBack">#5D4037</color>
     <color name="colorItemRed">#e53935</color>
     <color name="white">#ffffff</color>

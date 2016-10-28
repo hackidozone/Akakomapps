@@ -49,6 +49,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.MyViewHold
         myViewHolder.tgl.setText(item.getWaktu().toString());
         myViewHolder.deskripsi.setText(item.getDetail());
         myViewHolder.urlPhoto = item.getFoto();
+        myViewHolder.link = item.getLink();
 
         if(item.getFoto() != ""){
             Glide.with(mContext).load(item.getFoto()).asBitmap().placeholder(R.drawable.placeholder).into(myViewHolder.gambar);
@@ -72,7 +73,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.MyViewHold
         public TextView tgl, deskripsi;
         ImageView gambar;
         public CardView cv;
-        public String urlPhoto;
+        public String urlPhoto, link;
 
 
         public MyViewHolder(View itemView) {
@@ -101,6 +102,7 @@ public class BeritaAdapter extends RecyclerView.Adapter<BeritaAdapter.MyViewHold
             intent.putExtra(DetailBeritaActivity.KEY_TANGGAL, tgl.getText());
             intent.putExtra(DetailBeritaActivity.KEY_URL_FOTO, urlPhoto);
             intent.putExtra(DetailBeritaActivity.KEY_DESKRIPSI, deskripsi.getText());
+            intent.putExtra(DetailBeritaActivity.KEY_LINK, link);
             intent.putExtra("title","Berita");
             Mcontext.startActivity(intent);
 

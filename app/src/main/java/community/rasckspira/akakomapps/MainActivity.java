@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
 
                     //Replacing the main content with ProfileFragment Which is our Inbox View;
-                    case R.id.nav_home:
+//                    case R.id.nav_home:
+
                         /*ProfileFragment fragment = new ProfileFragment();
                         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.frame, fragment);

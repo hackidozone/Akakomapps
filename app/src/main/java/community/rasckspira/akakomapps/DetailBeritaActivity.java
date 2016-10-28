@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
     public static final String KEY_TANGGAL = "tanggal";
     public static final String KEY_URL_FOTO = "url_photo";
     public static final String KEY_DESKRIPSI = "deskripsi";
+    public static final String KEY_LINK = "link";
 
     private Toolbar toolbar;
     private TextView titleBar;
@@ -65,5 +68,25 @@ public class DetailBeritaActivity extends AppCompatActivity {
         else
             fotoDetailBerita.setVisibility(View.GONE);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.berita, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, judul.getText()+" baca lebih lanjut di "+getIntent().getExtras().getString(KEY_LINK));
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+                break;
+        }
+        return true;
     }
 }

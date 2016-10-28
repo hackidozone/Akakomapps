@@ -105,6 +105,7 @@ public class KampusFragment extends Fragment {
                                 item.setWaktu(jsonObject.getString("wInfo"));
                                 item.setDetail(jsonObject.getString("isInfo"));
                                 item.setFoto(jsonObject.getString("gamInfo"));
+                                item.setLink(jsonObject.getString("link"));
                                 feedItemList.add(item);
 
                             }

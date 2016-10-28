@@ -46,6 +46,7 @@ public class JurusanAdapter extends RecyclerView.Adapter<JurusanAdapter.MyViewHo
         myViewHolder.namaJurusan.setText(item.getNama().toString());
         myViewHolder.desJurusan.setText(item.getDetail().toString());
         myViewHolder.aLink = item.getLink();
+        myViewHolder.urlPhoto = item.getFoto();
 
 
 
@@ -62,6 +63,7 @@ public class JurusanAdapter extends RecyclerView.Adapter<JurusanAdapter.MyViewHo
         public TextView namaJurusan;
         public TextView desJurusan;
         public String aLink;
+        public String urlPhoto;
         public CardView cv;
 
 
@@ -89,6 +91,7 @@ public class JurusanAdapter extends RecyclerView.Adapter<JurusanAdapter.MyViewHo
             intent.putExtra(JurusanDetailActivity.KEY_NAMA, namaJurusan.getText());
             intent.putExtra(JurusanDetailActivity.KEY_DESKRIPSI, desJurusan.getText());
             intent.putExtra(JurusanDetailActivity.KEY_LINK, aLink);
+            intent.putExtra(JurusanDetailActivity.KEY_URL_PHOTO, urlPhoto);
             Mcontext.startActivity(intent);
 
         }

@@ -3,27 +3,26 @@
     <group
         android:id="@+id/aa"
         android:checkableBehavior="single">
-        <item
+       <!-- <item
             android:id="@+id/nav_home"
             android:icon="@mipmap/home"
             android:title="Beranda"
             android:checked="true" />
-
+-->
         <item
             android:id="@+id/nav_profil"
             android:icon="@mipmap/classroom"
             android:title="Profil" />
         <item
             android:id="@+id/nav_visi_misi"
-            android:icon="@mipmap/classroom"
+            android:icon="@mipmap/news"
             android:title="Visi Misi" />
 
-     <!--   <item
+    <!--    <item
             android:id="@+id/nav_beritaterbaru"
             android:icon="@mipmap/news"
             android:title="Berita Terbaru" />
--->
-        <item
+-->        <item
             android:id="@+id/nav_programstudi"
             android:icon="@mipmap/student"
             android:title="Program Studi" />
@@ -31,8 +30,7 @@
             android:id="@+id/nav_jabatan"
             android:icon="@mipmap/jabatan"
             android:title="Jabatan" />
-<!--
-        <item
+<!--        <item
             android:id="@+id/nav_infokampus"
             android:icon="@mipmap/apartment"
             android:title="Info Kampus" />-->

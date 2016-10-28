@@ -24,12 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="STMIK AKAKOM YOGYAKARTA
-
-Alamat  :Jl. Raya Janti Karang Jambe no 143 Yogyakarta D.I.Y 55198 Indonesia
-Email   :info@akakom.ac.id
-Telepon :(0274) 486664
-Fax     : (0274) 486438" />
+            android:text="STMIK AKAKOM YOGYAKARTA \nAlamat  :Jl. Raya Janti Karang Jambe no 143 Yogyakarta D.I.Y 55198 Indonesia \nEmail :info@akakom.ac.id \nTelepon :(0274) 486664 \nFax : (0274) 486438 \nInstagram : @stmikakakom \nLine : @akakomyogya" />
     </LinearLayout>
 
 </LinearLayout>

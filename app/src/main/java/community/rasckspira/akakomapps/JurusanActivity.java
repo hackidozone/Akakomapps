@@ -97,6 +97,7 @@ public class JurusanActivity extends AppCompatActivity {
                                 item.setNama(jsonObject.getString("namJurusan"));
                                 item.setDetail(jsonObject.getString("detJurusan"));
                                 item.setLink(jsonObject.getString("link"));
+                                item.setFoto(jsonObject.getString("img"));
                                 feedItemList.add(item);
 
                             }

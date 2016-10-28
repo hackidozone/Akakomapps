@@ -27,7 +27,7 @@ public class InfokampusAdapter extends RecyclerView.Adapter<InfokampusAdapter.My
 
     private List<Data> mItems;
     private Context mContext;
-    private static String urlFoto;
+    private static String urlFoto, link;
 
     public InfokampusAdapter(Context context, List<Data> mItems) {
 
@@ -53,6 +53,7 @@ public class InfokampusAdapter extends RecyclerView.Adapter<InfokampusAdapter.My
         myViewHolder.desJudul.setText(item.getDetail().toString());
         myViewHolder.tgl.setText(item.getWaktu().toString());
         urlFoto = item.getFoto();
+        link = item.getLink();
         if (!item.getFoto().equals(""))
             Glide.with(mContext).load(item.getFoto()).asBitmap().placeholder(R.drawable.placeholder).into(myViewHolder.foto);
         else
@@ -97,6 +98,7 @@ public class InfokampusAdapter extends RecyclerView.Adapter<InfokampusAdapter.My
             intent.putExtra(DetailBeritaActivity.KEY_TANGGAL, tgl.getText());
             intent.putExtra(DetailBeritaActivity.KEY_URL_FOTO, urlFoto);
             intent.putExtra(DetailBeritaActivity.KEY_DESKRIPSI, desJudul.getText());
+            intent.putExtra(DetailBeritaActivity.KEY_LINK, link);
             intent.putExtra("title","Info Kampus");
             Mcontext.startActivity(intent);
 
