@@ -10,8 +10,7 @@
     app:theme="@style/AppTheme"
     app:layout_scrollFlags="scroll|enterAlways"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:layout_collapseMode="pin"
-    android:elevation="4dp">
+    app:layout_collapseMode="pin">
 
     <ImageView
         android:src="@drawable/appbar"
