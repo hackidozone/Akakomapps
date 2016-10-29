@@ -23,6 +23,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,7 @@ public class KampusFragment extends Fragment {
     private List<Data> feedItemList = new ArrayList<Data>();
     private String urls;
     public LinearLayout ll, noInternet;
+    private TextView messageError;
 
     @Nullable
 
@@ -64,7 +66,13 @@ public class KampusFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_kampus, container, false);
 
         initView(v);
-        getDataJson(v);
+        if (Config.isNetworkAvailable(getContext())) {
+            getDataJson(v);
+        }else{
+            ll.setVisibility(View.GONE);
+            noInternet.setVisibility(View.VISIBLE);
+            messageError.setText(getResources().getString(R.string.access_koneksi_problem));
+        }
 
         return v;
     }
@@ -115,6 +123,7 @@ public class KampusFragment extends Fragment {
                             e.printStackTrace();
                             ll.setVisibility(View.GONE);
                             noInternet.setVisibility(View.VISIBLE);
+                            messageError.setText(getResources().getString(R.string.access_server_problem));
                         }
                         mAdapter = new InfokampusAdapter(getActivity(), feedItemList);
                         mRecyclerView.setAdapter(mAdapter);
@@ -141,6 +150,7 @@ public class KampusFragment extends Fragment {
                         snackbar.show();*/
                         ll.setVisibility(View.GONE);
                         noInternet.setVisibility(View.VISIBLE);
+                        messageError.setText(getResources().getString(R.string.access_server_problem));
                     }
                 }
         );

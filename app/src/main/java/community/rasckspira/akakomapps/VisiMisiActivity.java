@@ -35,7 +35,7 @@ public class VisiMisiActivity extends AppCompatActivity {
     public LinearLayout ll, noInternet;
     private ProgressBar loading;
     private RelativeLayout activity;
-    private TextView title;
+    private TextView title, messageError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,13 @@ public class VisiMisiActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Visi dan Misi");
 
         initView();
-        getDataJson();
+        if (Config.isNetworkAvailable(getApplicationContext())) {
+            getDataJson();
+        }else{
+            ll.setVisibility(View.GONE);
+            noInternet.setVisibility(View.VISIBLE);
+            messageError.setText(getResources().getString(R.string.access_koneksi_problem));
+        }
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +69,7 @@ public class VisiMisiActivity extends AppCompatActivity {
         ll.setVisibility(View.VISIBLE);
         title = (TextView) findViewById(R.id.toolbar_title);
         title.setText("Visi dan Misi");
+        messageError = (TextView) findViewById(R.id.message_error);
         noInternet = (LinearLayout) findViewById(R.id.ll_nointernet);
         txtMisi = (TextView) findViewById(R.id.misi);
         txtVisi = (TextView) findViewById(R.id.visi);
@@ -92,6 +99,7 @@ public class VisiMisiActivity extends AppCompatActivity {
                             e.printStackTrace();
                             ll.setVisibility(View.GONE);
                             noInternet.setVisibility(View.VISIBLE);
+                            messageError.setText(getResources().getString(R.string.access_server_problem));
                         }
                     }
                 },
@@ -116,6 +124,7 @@ public class VisiMisiActivity extends AppCompatActivity {
                         snackbar.show();*/
                         ll.setVisibility(View.GONE);
                         noInternet.setVisibility(View.VISIBLE);
+                        messageError.setText(getResources().getString(R.string.access_server_problem));
 
                     }
                 }

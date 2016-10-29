@@ -40,13 +40,21 @@ public class JabatanActivity extends AppCompatActivity {
     private String URL;
     public LinearLayout ll, noInternet;
     private Toolbar toolbar;
-    private TextView title;
+    private TextView title, messageError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jabatan);
         initView();
-        getDataJson();
+
+        if (Config.isNetworkAvailable(getApplicationContext())) {
+            getDataJson();
+        }else{
+            ll.setVisibility(View.GONE);
+            noInternet.setVisibility(View.VISIBLE);
+            messageError.setText(getResources().getString(R.string.access_koneksi_problem));
+        }
+
     }
 
     private void initView(){
@@ -55,7 +63,7 @@ public class JabatanActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle("Pejabat");
-
+        messageError = (TextView) findViewById(R.id.message_error);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +117,7 @@ public class JabatanActivity extends AppCompatActivity {
                             e.printStackTrace();
                             ll.setVisibility(View.GONE);
                             noInternet.setVisibility(View.VISIBLE);
+                            messageError.setText(getResources().getString(R.string.access_server_problem));
                         }
                         mAdapter = new RecyclerAdapter1(JabatanActivity.this, feedItemList);
                         mRecyclerView.setAdapter(mAdapter);
@@ -135,6 +144,7 @@ public class JabatanActivity extends AppCompatActivity {
                         snackbar.show();*/
                         ll.setVisibility(View.GONE);
                         noInternet.setVisibility(View.VISIBLE);
+                        messageError.setText(getResources().getString(R.string.access_server_problem));
                     }
                 }
         );

@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     public LinearLayout ll, noInternet;
     private RelativeLayout activity;
     private Toolbar toolbar;
-    private TextView title;
+    private TextView title, messageError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         initView();
-        getDataJson();
+        if (Config.isNetworkAvailable(getApplicationContext())) {
+            getDataJson();
+        }else{
+            ll.setVisibility(View.GONE);
+            noInternet.setVisibility(View.VISIBLE);
+            messageError.setText(getResources().getString(R.string.access_koneksi_problem));
+        }
     }
     private void initView(){
         activity = (RelativeLayout) findViewById(R.id.activity_profile);
@@ -65,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity {
                 getDataJson();
             }
         });
+        messageError = (TextView) findViewById(R.id.message_error);
     }
 
     private void getDataJson() {
@@ -90,6 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
                             e.printStackTrace();
                             ll.setVisibility(View.GONE);
                             noInternet.setVisibility(View.VISIBLE);
+                            messageError.setText(getResources().getString(R.string.access_server_problem));
                         }
                     }
                 },
@@ -114,6 +122,7 @@ public class ProfileActivity extends AppCompatActivity {
                         snackbar.show();*/
                         ll.setVisibility(View.GONE);
                         noInternet.setVisibility(View.VISIBLE);
+                        messageError.setText(getResources().getString(R.string.access_server_problem));
                     }
                 }
         );

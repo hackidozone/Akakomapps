@@ -47,6 +47,7 @@ public class BeritaFragment extends Fragment {
     private BeritaAdapter mAdapter;
     private List<Data> feedItemList = new ArrayList<Data>();
     private String urls;
+    private TextView messageError;
     public LinearLayout ll, noInternet;
 
 
@@ -56,7 +57,14 @@ public class BeritaFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_berita, container, false);
 
         initView(v);
-        getDataJson(v);
+        if (Config.isNetworkAvailable(getContext())) {
+            getDataJson(v);
+        }else{
+            ll.setVisibility(View.GONE);
+            noInternet.setVisibility(View.VISIBLE);
+            messageError.setText(getResources().getString(R.string.access_koneksi_problem));
+        }
+
         return v;
     }
 
@@ -65,6 +73,7 @@ public class BeritaFragment extends Fragment {
         ll = (LinearLayout) v.findViewById(R.id.ll);
         ll.setVisibility(View.VISIBLE);
         mLayoutManager = new LinearLayoutManager(getActivity());
+        messageError = (TextView) v.findViewById(R.id.message_error);
         feedItemList = new ArrayList<Data>();
         mRecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_berita);
         mRecyclerView.setHasFixedSize(true);
@@ -108,6 +117,7 @@ public class BeritaFragment extends Fragment {
                             e.printStackTrace();
                             ll.setVisibility(View.GONE);
                             noInternet.setVisibility(View.VISIBLE);
+                            messageError.setText(getResources().getString(R.string.access_server_problem));
                         }
                         mAdapter = new BeritaAdapter(getActivity(), feedItemList);
                         mRecyclerView.setAdapter(mAdapter);
@@ -134,6 +144,7 @@ public class BeritaFragment extends Fragment {
                         snackbar.show();*/
                         ll.setVisibility(View.GONE);
                         noInternet.setVisibility(View.VISIBLE);
+                        messageError.setText(getResources().getString(R.string.access_server_problem));
                     }
                 }
         );

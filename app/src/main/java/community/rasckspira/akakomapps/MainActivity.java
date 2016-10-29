@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import community.rasckspira.akakomapps.adapter.MenuAdapter;
 import community.rasckspira.akakomapps.fragment.DialogFrament;
+import community.rasckspira.akakomapps.helper.Config;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,41 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
                 //Closing drawer on item click
                 drawerLayout.closeDrawers();
-
-
-                //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
-
-                    //Replacing the main content with ProfileFragment Which is our Inbox View;
-//                    case R.id.nav_home:
-
-                        /*ProfileFragment fragment = new ProfileFragment();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frame, fragment);
-                        fragmentTransaction.commit();
-                        return true;*/
-
-                    // For rest of the options we just show a toast on click
 
                     case R.id.nav_profil:
                         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                         return true;
-                       /* VisiMisiFragment fragment2 = new VisiMisiFragment();
-                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frame, fragment2);
-                        fragmentTransaction.commit();
-                        return true;*/
                     case R.id.nav_visi_misi:
                         startActivity(new Intent(MainActivity.this, VisiMisiActivity.class));
                         return true;
                     case R.id.nav_programstudi:
                         startActivity(new Intent(MainActivity.this, JurusanActivity.class));
                         return true;
-                        /*JurusanFragment fragment3 = new JurusanFragment();
-                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frame, fragment3);
-                        fragmentTransaction.commit();
-                        return true;*/
                     case R.id.nav_jabatan:
                         startActivity(new Intent(MainActivity.this, JabatanActivity.class));
                         return true;
@@ -111,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, KontakMapsActivity.class));
                         return true;
                     case R.id.nav_tentangaplikasi:
-                        /*DialogFrament customDialogFragment = new DialogFrament();
-                        customDialogFragment.show(getSupportFragmentManager(), null);
-                        return true;*/
                         startActivity(new Intent(MainActivity.this, AboutActivity.class));
                         return true;
 
