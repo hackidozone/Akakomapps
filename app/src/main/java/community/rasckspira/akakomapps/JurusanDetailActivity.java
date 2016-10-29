@@ -1,6 +1,8 @@
 package community.rasckspira.akakomapps;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +19,8 @@ public class JurusanDetailActivity extends AppCompatActivity {
     public static final String KEY_LINK = "link";
     public static final String KEY_URL_PHOTO = "photo";
 
+    CollapsingToolbarLayout collapsingToolbarLayout;
+
     private TextView judul, deskripsi;
     private Button btnMore;
     private Toolbar toolbar;
@@ -30,8 +34,10 @@ public class JurusanDetailActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("");
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle(getIntent().getExtras().getString(KEY_NAMA));
+        collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#ffffff"));
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
